@@ -1,0 +1,19 @@
+#include <avr/io.h>
+#include <util/delay.h>
+
+int main() {
+    DDRA = 0xFF;
+    const uint8_t segments[10] = {0xFC, 0x60, 0xDA, 0xF2, 0x66, 0xB6, 0xBE, 0xE0, 0xFF, 0xF6};
+    int i = 0;
+    while(1){
+        PORTA = segments[i];
+        i++;
+        _delay_ms(1000);
+        if(i == 10){
+            i = 0;
+        }
+    }
+    return 0;
+}
+
+
